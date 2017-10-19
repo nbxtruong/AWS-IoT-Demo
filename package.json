@@ -1,0 +1,23 @@
+{
+  "name": "aws-iot-demo",
+  "version": "1.0.0",
+  "description": "AWS demo only",
+  "main": "Interact.js",
+  "dependencies": {
+    "aws-iot-device-sdk": "^2.1.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nbxtruong/AWS-IoT-Demo.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/nbxtruong/AWS-IoT-Demo/issues"
+  },
+  "homepage": "https://github.com/nbxtruong/AWS-IoT-Demo#readme"
+}
