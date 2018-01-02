@@ -8,11 +8,11 @@ var awsIot = require('aws-iot-device-sdk');
 // connection will be terminated.
 //
 var thingShadows = awsIot.thingShadow({
-    keyPath: 'D:/WebProject/AWS-IoT-Demo/cert/bus.private.key',
-    certPath: 'D:/WebProject/AWS-IoT-Demo/cert/bus.cert.pem',
-    caPath: 'D:/WebProject/AWS-IoT-Demo/cert/rootCA.pem',
-    clientId: 'bus',
-    host: 'a3w4o5k368npm1.iot.us-east-1.amazonaws.com'
+    keyPath: './cert/TruongESP32.private.key',
+    certPath: './cert/TruongESP32.cert.pem',
+    caPath: './cert/rootCA.pem',
+    clientId: 'TruongESP32',
+    host: 'a2oxjrmrtmst02.iot.us-west-2.amazonaws.com'
 });
 
 //
@@ -23,16 +23,14 @@ var clientTokenUpdate;
 //
 // Simulated device values
 //
-var rval = 222;
-var gval = 555;
-var bval = 222;
+var status = 'Online';
 
 thingShadows.on('connect', function () {
     //
     // After connecting to the AWS IoT platform, register interest in the
     // Thing Shadow named 'RGBLedLamp'.
     //
-    thingShadows.register('bus', {}, function () {
+    thingShadows.register('TruongESP32', {}, function () {
 
         // Once registration is complete, update the Thing Shadow named
         // 'RGBLedLamp' with the latest device state and save the clientToken
@@ -43,14 +41,12 @@ thingShadows.on('connect', function () {
         var rgbLedLampState = {
             "state": {
                 "desired": {
-                    "red": rval,
-                    "green": gval,
-                    "blue": bval
+                    "status": status
                 }
             }
         };
 
-        clientTokenUpdate = thingShadows.update('bus', rgbLedLampState);
+        clientTokenUpdate = thingShadows.update('TruongESP32', rgbLedLampState);
         //
         // The update method returns a clientToken; if non-null, this value will
         // be sent in a 'status' event when the operation completes, allowing you

@@ -4,7 +4,7 @@
   "description": "AWS demo only",
   "main": "Interact.js",
   "dependencies": {
-    "aws-iot-device-sdk": "^2.1.0"
+    "aws-iot-device-sdk": "^2.2.0"
   },
   "devDependencies": {},
   "scripts": {

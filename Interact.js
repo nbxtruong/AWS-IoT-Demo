@@ -2,17 +2,17 @@ var awsIot = require('aws-iot-device-sdk');
 
 //
 // Replace the values of '<YourUniqueClientIdentifier>' and '<YourCustomEndpoint>'
-// with a unique client identifier and custom host endpoint provided in AWS IoT cloud
+// with a unique client identifier and custom host endpoint provided in AWS IoT.
 // NOTE: client identifiers must be unique within your AWS account; if a client attempts 
 // to connect with a client identifier which is already in use, the existing 
 // connection will be terminated.
 //
 var device = awsIot.device({
-    keyPath: 'D:/WebProject/AWS-IoT-Demo/cert/bus.private.key',
-    certPath: 'D:/WebProject/AWS-IoT-Demo/cert/cert/bus.cert.pem',
-    caPath: 'D:/WebProject/AWS-IoT-Demo/cert/cert/rootCA.pem',
-    clientId: 'bus',
-    host: 'a3w4o5k368npm1.iot.us-east-1.amazonaws.com'
+    keyPath: './cert/TruongESP32.private.key',
+    certPath: './cert/TruongESP32.cert.pem',
+    caPath: './cert/rootCA.pem',
+    clientId: 'TruongESP32',
+    host: 'a2oxjrmrtmst02.iot.us-west-2.amazonaws.com'
 });
 
 //
@@ -22,19 +22,8 @@ var device = awsIot.device({
 device
     .on('connect', function () {
         console.log('connect');
-        device.subscribe('resived_topic_1');
-        device.publish('sent_topic_2', JSON.stringify({
-
-            // For DynamoDB demo
-
-            // serialNumber: 'Truong',
-            // startEngine: '123'
-
-            // For simple MQTT demo
-
-            test_data: 'Hello AWS Iot'
-        }));
-        console.log('Send succesfully');
+        device.subscribe('topic_1');
+        device.publish('topic_2', JSON.stringify({ test_data: 1 }));
     });
 
 device
